@@ -23,5 +23,6 @@ cd backend
 npm start
 cd ..
 npm start
+```
 
 Ces commandes permettront de démarrer l'API qui fournit des données de la base de données ainsi que le script de scraping, ajoutant ainsi les données à la base de données.
