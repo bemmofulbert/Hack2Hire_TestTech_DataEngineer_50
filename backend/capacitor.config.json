@@ -1,0 +1,8 @@
+{
+  "appId": "com.bemsproduction.app",
+  "appName": "OneClickWork",
+  "webDir": "dist/app-test",
+  "server": {
+    "androidScheme": "https"
+  }
+}

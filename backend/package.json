@@ -1,0 +1,20 @@
+{
+  "name": "serveur_app_test",
+  "version": "1.0.0",
+  "description": "serveur for SN Weather",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js *.html",
+    "start": "node index.js *.html"
+  },
+  "author": "bemmo",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.3",
+    "pg-promise": "^11.10.2"
+  }
+}
