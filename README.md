@@ -21,12 +21,14 @@ Pour lancer le script, utilisez les commandes suivantes :
 Lancer le backend (api):
 ```bash
 cd backend
+npm i
 npm start
 ```
 
 lancer le script le script de scraping:
 ```bash
 cd ..
+npm i
 npm start
 ```
 
