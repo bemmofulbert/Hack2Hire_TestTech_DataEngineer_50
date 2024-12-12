@@ -1,6 +1,6 @@
 # DataBeez_Hack2Hire1
 
-## Profil Data Engineer
+## Profil Data Engineer 📉📊👨🏾‍💻
 
 Ce projet est un script de scraping permettant de collecter des données météo journalières du Sénégal, en se concentrant sur les villes de Dakar et Thiès, à partir d'OpenWeather. 
 
@@ -14,7 +14,7 @@ Ce projet est un script de scraping permettant de collecter des données météo
 
 Les données sont ensuite chargées dans une base de données relationnelle PostgreSQL.
 
-## Démarrage 
+## Démarrage 🚀
 
 Pour lancer le script, utilisez les commandes suivantes :
 
@@ -31,3 +31,7 @@ npm start
 ```
 
 Ces commandes permettront de démarrer l'API qui fournit des données de la base de données ainsi que le script de scraping, ajoutant ainsi les données à la base de données.
+
+## dump.json 🗄️
+
+Ce fichier est un export de notre base de données
