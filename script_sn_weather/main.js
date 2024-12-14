@@ -1,16 +1,15 @@
 import { env } from "node-environment";
 import axios from "axios";
-
-process.env.NODE_ENV = "dev";
+import { HOST_WEATHER_API, HOST_API, API_KEY } from "./config.js";
 
 const weatherApi = axios.create({
-  baseURL: "https://api.openweathermap.org/data/2.5/weather",
-  timeout: 5000,
+  baseURL: HOST_WEATHER_API,
+  timeout: 3000,
 });
 
 const bdApi = axios.create({
-  baseURL: env("staging", "development") ? "http://localhost:3000" : "...", // put production url here,
-  timeout: 5000,
+  baseURL: HOST_API,
+  timeout: 3000,
 });
 
 function save(data, _callback = (res) => {}) {
@@ -20,7 +19,7 @@ function save(data, _callback = (res) => {}) {
     pressure: data.main.pressure,
     humidity: data.main.humidity,
     time: data.dt,
-    rawjson: JSON.stringify(data).substring(0, 4096),
+    // rawjson: JSON.stringify(data).substring(0, 4096),
   };
   //console.log(toSave);
   bdApi
@@ -29,7 +28,7 @@ function save(data, _callback = (res) => {}) {
       _callback(res);
     })
     .catch((error) => {
-      console.log(error);
+      console.error("Apierror: " + toSave.city);
     });
 }
 
@@ -37,24 +36,24 @@ function save(data, _callback = (res) => {}) {
 
 weatherApi
   .get("", {
-    params: { q: "Dakar,sn", APPID: "970f9e72cca5014fbc9f95aded667703" },
+    params: { q: "Dakar,sn", APPID: API_KEY },
   })
   .then((res) => {
     console.log("\nSave Dakar\n");
     save(res.data);
   })
   .catch((err) => {
-    console.error("\nError Weather Api\nReason: " + err);
+    console.error("\nError Weather Api\nReason: internet connection");
   });
 
 weatherApi
   .get("", {
-    params: { q: "Thiès,sn", APPID: "970f9e72cca5014fbc9f95aded667703" },
+    params: { q: "Thiès,sn", APPID: API_KEY },
   })
   .then((res) => {
     console.log("\nSave Thiès\n");
     save(res.data);
   })
   .catch((err) => {
-    console.error("\nError Weather Api\nReason: " + err);
+    console.error("\nError Weather Api\nReason: internet connection");
   });

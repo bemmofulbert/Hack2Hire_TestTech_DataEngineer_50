@@ -87,3 +87,48 @@ Thumbs.db
 # System files
 /backend/.DS_Store
 /backend/Thumbs.db
+
+## SCRIPT ##
+
+# Compiled output
+/script_sn_weather/dist
+/script_sn_weather/tmp
+/script_sn_weather/out-tsc
+/script_sn_weather/bazel-out
+
+# Node
+/script_sn_weather/node_modules
+/script_sn_weather/npm-debug.log
+/script_sn_weather/yarn-error.log
+/script_sn_weather/package-lock.json
+/script_sn_weather/yarn.lock
+
+# IDEs and editors
+/script_sn_weather/.idea/
+/script_sn_weather/.project
+/script_sn_weather/.classpath
+/script_sn_weather/.c9/
+/script_sn_weather/*.launch
+/script_sn_weather/.settings/
+/script_sn_weather/*.sublime-workspace
+
+# Visual Studio Code
+/script_sn_weather/.vscode/*
+/script_sn_weather/!.vscode/settings.json
+/script_sn_weather/!.vscode/tasks.json
+/script_sn_weather/!.vscode/launch.json
+/script_sn_weather/!.vscode/extensions.json
+/script_sn_weather/.history/*
+
+# Miscellaneous
+/script_sn_weather/.angular/cache
+/script_sn_weather/.sass-cache/
+/script_sn_weather/connect.lock
+/script_sn_weather/coverage
+/script_sn_weather/libpeerconnection.log
+/script_sn_weather/testem.log
+/script_sn_weather/typings
+
+# System files
+/script_sn_weather/.DS_Store
+/script_sn_weather/Thumbs.db

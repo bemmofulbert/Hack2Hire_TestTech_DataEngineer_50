@@ -1,0 +1,11 @@
+
+FROM node:22
+
+#USER root
+WORKDIR /backend
+COPY package.json .
+#RUN echo "127.0.0.1 scraping_sn_weather-backend" >> /etc/hosts
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD npm start

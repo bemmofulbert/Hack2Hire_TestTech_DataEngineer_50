@@ -1,0 +1,8 @@
+
+FROM node:22
+
+WORKDIR /script_sn_weather
+COPY package.json .
+RUN npm install
+COPY . .
+CMD npm start

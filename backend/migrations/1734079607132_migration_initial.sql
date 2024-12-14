@@ -1,4 +1,4 @@
--- Hack2Hire Database Code
+-- Up Migration
 
 BEGIN;
 
@@ -16,3 +16,6 @@ CREATE TABLE weather
 );
 
 END;
+
+-- Down Migration
+DROP TABLE weather;

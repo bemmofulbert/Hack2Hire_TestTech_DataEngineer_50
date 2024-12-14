@@ -1,9 +1,9 @@
 const info = {
-  username: "postgres",
-  password: "admin",
-  host: "localhost", //"192.168.43.10",
-  port: "5432",
-  database: "sn_weather",
+  username: process.env.DB_USER || "postgres",
+  password: process.env.DB_PASSWORD || "admin",
+  host: process.env.DB_HOST || "localhost", //"192.168.43.10",
+  port: process.env.DB_PORT || "5432",
+  database: process.env.DB_NAME || "sn_weather",
   //ssl : "true"
 };
 const pg_promise = require("pg-promise");

@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 
 const Api = require("./src/api/Api");
 
@@ -28,5 +29,5 @@ app.use(function (req, res, next) {
 //Toutes les routes de l'application
 app.use(Api.router);
 
-const port = process.env.PORT || 3000;
+const port = process.env.NODE_DOCKER_PORT || process.env.PORT || 3000;
 app.listen(port, console.log("app is running on port " + port));
