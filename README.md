@@ -2,7 +2,7 @@
 
 ## Profil Data Engineer 📉📊👨🏾‍💻
 
-Ce projet est un script de scraping permettant de collecter des données météo journalières du Sénégal, en se concentrant sur les villes de Dakar et Thiès, à partir d'OpenWeather. 
+Ce projet est un script de scraping et son environnement permettant de collecter des données météo journalières du Sénégal, en se concentrant sur les villes de Dakar et Thiès, à partir d'OpenWeather. 
 
 ### Données collectées
 - Nom de la ville
