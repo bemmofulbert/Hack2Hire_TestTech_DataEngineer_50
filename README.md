@@ -16,7 +16,7 @@ Les données sont ensuite chargées dans une base de données relationnelle Post
 
 ## Démarrage 🚀
 
-Pour lancer le script, utilisez les commandes suivantes :
+Pour lancer le script, utilisez la commande suivante :
 
 ```bash
 docker compose up
