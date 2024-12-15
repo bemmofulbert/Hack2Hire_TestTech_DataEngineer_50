@@ -1,60 +1,59 @@
 services:
   postgresdb:
     image: postgres
-    container_name: postgresdb
-    hostname: postgresdb
+    restart: unless-stopped
     networks:
            default:
-                ipv4_address: 172.18.0.2
-    restart: unless-stopped
+                ipv4_address: $POSTGRESDB_IP #172.18.0.2
     env_file: ./.env
     environment:
       - POSTGRES_USER=$POSTGRESDB_USER
       - POSTGRES_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
       - POSTGRES_DB=$POSTGRESDB_DATABASE
     ports:
-      - $POSTGRESDB_LOCAL_PORT:$POSTGRESDB_DOCKER_PORT
+      - $POSTGRESDB_PORT:$POSTGRESDB_PORT
     volumes:
       - db:/var/lib/postgres
   backend:
-    hostname: backend
     depends_on:
       - postgresdb
     build: ./backend
     #restart: unless-stopped
     env_file: ./.env
     ports:
-      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+      - $BACKEND_NODE_PORT:$BACKEND_NODE_PORT
     environment:
       - DB_HOST=postgresdb
       - DB_USER=$POSTGRESDB_USER
       - DB_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
       - DB_NAME=$POSTGRESDB_DATABASE
-      - DB_PORT=$POSTGRESDB_DOCKER_PORT
-      - DATABASE_URL=$DATABASE_URL
+      - DB_PORT=$POSTGRESDB_PORT
+      - POSTGRESDB_IP=$POSTGRESDB_IP
     stdin_open: false
     tty: true
-    #command: "npm run migrate:up & return 0;"
+    #command: "DATABASE_URL=$DATABASE_URL npm run migrate:up"
     networks:
            default:
                 ipv4_address: 172.18.0.3
   app:
-    hostname: sn_weather_script
     depends_on:
-      - backend
+      - backend         
     build: ./script_sn_weather
     env_file: ./.env
     #ports:
       #- $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     environment:
+      - BACKEND_NODE_IP:$BACKEND_NODE_IP
+      - BACKEND_NODE_PORT:$BACKEND_NODE_PORT
       - HOST_API=$HOST_API
       - HOST_WEATHER_API=$HOST_WEATHER_API
-      - API_KEY=$API_KEY
+      - API_KEY=$API_KEY        
     #stdin_open: false
-    #tty: false
+    tty: true
     networks:
            default:
                 ipv4_address: 172.18.0.4
+        
 
 volumes: 
   db:

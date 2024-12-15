@@ -18,22 +18,20 @@ Les données sont ensuite chargées dans une base de données relationnelle Post
 
 Pour lancer le script, utilisez les commandes suivantes :
 
-Lancer le backend (api):
 ```bash
-cd backend
-npm i
-npm start
+docker compose up
 ```
 
-lancer le script le script de scraping:
-```bash
-cd ..
-npm i
-npm start
-```
 
-Ces commandes permettront de démarrer l'API qui fournit des données de la base de données ainsi que le script de scraping, ajoutant ainsi les données à la base de données.
+Cette commande permet de démarrer l'API qui fournit des données de la base de données ainsi que le script de scraping une (01) seule fois, ajoutant ainsi les données à la base de données.
+Si vous voulez refaire un scraping executez la meme commande
 
 ## dump.json 🗄️
 
-Ce fichier est un export de notre base de données
+Vous pouvez consulter les donnees collectees a l'adresse:
+
+```bash
+http://${BACKEND_NODE_IP}:${BACKEND_NODE_PORT}/weather # par defaut http://172.18.0.3:3000/weather
+```
+
+Voir .env pour les variable d'environnement
