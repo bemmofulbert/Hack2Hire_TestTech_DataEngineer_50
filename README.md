@@ -35,3 +35,11 @@ http://${BACKEND_NODE_IP}:${BACKEND_NODE_PORT}/weather # par defaut http://172.1
 ```
 
 Voir .env pour les variables d'environnement
+
+## data.json
+
+Ce fichier contient les données collectees jusqu'a maintenant
+
+
+<a href="https://lookerstudio.google.com/s/inen86cLqKg"><img src="https://i.ibb.co/hDddMV4/22.png" alt="22" border="0"></a>
+<a href="https://lookerstudio.google.com/s/inen86cLqKg">voir looker studio</a>
