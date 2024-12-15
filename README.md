@@ -42,4 +42,5 @@ Ce fichier contient les données collectees jusqu'a maintenant
 
 
 <a href="https://lookerstudio.google.com/s/inen86cLqKg"><img src="https://i.ibb.co/hDddMV4/22.png" alt="22" border="0"></a>
+<br>
 <a href="https://lookerstudio.google.com/s/inen86cLqKg">voir looker studio</a>
