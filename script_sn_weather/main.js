@@ -69,9 +69,10 @@ function listen() {
 //----------------- MAIN --------------------
 console.log(process.env.INTERVAL);
 if (process.env.INTERVAL && process.env.INTERVAL > 59) {
+  listen();
   while (true) {
     while (!SAVED) getData();
-    listen();
+
     await new Promise((r) => setTimeout(r, process.env.INTERVAL * 1000));
   }
 } else {
