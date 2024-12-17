@@ -66,6 +66,7 @@ function listen() {
   const port = process.env.NODE_DOCKER_PORT || process.env.PORT || 3000;
   server.listen(port);
 }
+
 //----------------- MAIN --------------------
 console.log("INTERVAL = " + process.env.INTERVAL);
 
