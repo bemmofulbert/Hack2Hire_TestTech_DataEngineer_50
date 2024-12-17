@@ -1,6 +1,5 @@
 import axios from "axios";
 import { HOST_WEATHER_API, HOST_API, API_KEY } from "./config.js";
-import http from "http";
 let SAVED = false;
 
 const weatherApi = axios.create({
@@ -62,19 +61,18 @@ function getData() {
 }
 
 function listen() {
-  const server = http.createServer();
+  const express = require("express");
+  const app = express();
   const port = process.env.NODE_DOCKER_PORT || process.env.PORT || 3000;
-  server.listen(port);
+  app.listen(port, console.log("app is running on port " + port));
 }
-
 //----------------- MAIN --------------------
 console.log("INTERVAL = " + process.env.INTERVAL);
-
 if (process.env.INTERVAL && process.env.INTERVAL > 59) {
-  setInterval(() => {
+  while (true) {
     while (!SAVED) getData();
-  }, process.env.INTERVAL * 1000);
-  listen();
+    await new Promise((r) => setTimeout(r, process.env.INTERVAL * 1000));
+  }
 } else {
   getData();
   process.exit();
