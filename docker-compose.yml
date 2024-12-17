@@ -47,7 +47,8 @@ services:
       - BACKEND_NODE_PORT:$BACKEND_NODE_PORT
       - HOST_API=$HOST_API
       - HOST_WEATHER_API=$HOST_WEATHER_API
-      - API_KEY=$API_KEY        
+      - API_KEY=$API_KEY
+      - INTERVAL=$INTERVAL      
     #stdin_open: false
     tty: true
     networks:

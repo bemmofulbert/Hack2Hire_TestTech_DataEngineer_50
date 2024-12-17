@@ -32,28 +32,39 @@ function save(data, _callback = (res) => {}) {
     });
 }
 
+function getData() {
+  weatherApi
+    .get("", {
+      params: { q: "Dakar,sn", APPID: API_KEY },
+    })
+    .then((res) => {
+      console.log("\nSave Dakar\n");
+      save(res.data);
+    })
+    .catch((err) => {
+      console.error("\nError Weather Api\nReason: internet connection");
+    });
+
+  weatherApi
+    .get("", {
+      params: { q: "Thiès,sn", APPID: API_KEY },
+    })
+    .then((res) => {
+      console.log("\nSave Thiès\n");
+      save(res.data);
+    })
+    .catch((err) => {
+      console.error("\nError Weather Api\nReason: internet connection");
+    });
+}
+
 //----------------- MAIN --------------------
-
-weatherApi
-  .get("", {
-    params: { q: "Dakar,sn", APPID: API_KEY },
-  })
-  .then((res) => {
-    console.log("\nSave Dakar\n");
-    save(res.data);
-  })
-  .catch((err) => {
-    console.error("\nError Weather Api\nReason: internet connection");
-  });
-
-weatherApi
-  .get("", {
-    params: { q: "Thiès,sn", APPID: API_KEY },
-  })
-  .then((res) => {
-    console.log("\nSave Thiès\n");
-    save(res.data);
-  })
-  .catch((err) => {
-    console.error("\nError Weather Api\nReason: internet connection");
-  });
+console.log(process.env.INTERVAL);
+if (process.env.INTERVAL && process.env.INTERVAL > 59) {
+  while (true) {
+    getData();
+    await new Promise((r) => setTimeout(r, process.env.INTERVAL * 1000));
+  }
+} else {
+  getData();
+}
