@@ -58,8 +58,10 @@ function getData() {
         getData();
       });
     })
-    .catch((err) => {
+    .catch(async (err) => {
       console.error("\nError Weather Api\nReason: internet connection");
+      await new Promise((r) => setTimeout(r, 10000));
+      getData();
     });
 }
 
