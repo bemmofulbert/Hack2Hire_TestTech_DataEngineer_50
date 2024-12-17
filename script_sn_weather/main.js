@@ -1,6 +1,7 @@
 import { env } from "node-environment";
 import axios from "axios";
 import { HOST_WEATHER_API, HOST_API, API_KEY } from "./config.js";
+let SAVED = false;
 
 const weatherApi = axios.create({
   baseURL: HOST_WEATHER_API,
@@ -51,7 +52,9 @@ function getData() {
     })
     .then((res) => {
       console.log("\nSave Thiès\n");
-      save(res.data);
+      save(res.data, () => {
+        SAVED = true;
+      });
     })
     .catch((err) => {
       console.error("\nError Weather Api\nReason: internet connection");
@@ -62,7 +65,7 @@ function getData() {
 console.log(process.env.INTERVAL);
 if (process.env.INTERVAL && process.env.INTERVAL > 59) {
   while (true) {
-    getData();
+    while (!SAVED) getData();
     await new Promise((r) => setTimeout(r, process.env.INTERVAL * 1000));
   }
 } else {
