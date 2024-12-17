@@ -1,6 +1,6 @@
 import axios from "axios";
 import { HOST_WEATHER_API, HOST_API, API_KEY } from "./config.js";
-let SAVED = false;
+
 let INTERVAL = process.env.INTERVAL || 0;
 
 const weatherApi = axios.create({
@@ -13,7 +13,7 @@ const bdApi = axios.create({
   timeout: 3000,
 });
 
-function save(data, _callback = (res) => {}) {
+function save(data, _catch = (res) => {}, _callback = (res) => {}) {
   let toSave = {
     city: data.name,
     description: data.weather[0].description.substring(0, 512),
@@ -30,6 +30,7 @@ function save(data, _callback = (res) => {}) {
     })
     .catch((error) => {
       console.error("Apierror: " + toSave.city);
+      _catch(error);
     });
 }
 
@@ -52,8 +53,9 @@ function getData() {
     })
     .then((res) => {
       console.log("\nSave Thiès\n");
-      save(res.data, () => {
-        SAVED = true;
+      save(res.data, async () => {
+        await new Promise((r) => setTimeout(r, 10000));
+        getData();
       });
     })
     .catch((err) => {
@@ -65,7 +67,7 @@ function getData() {
 console.log("INTERVAL = " + INTERVAL);
 if (INTERVAL > 59) {
   while (true) {
-    while (!SAVED) getData();
+    getData();
     await new Promise((r) => setTimeout(r, INTERVAL * 1000));
   }
 } else {

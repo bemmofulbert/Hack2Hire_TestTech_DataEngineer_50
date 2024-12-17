@@ -26,6 +26,12 @@ docker compose up
 Cette commande permet de démarrer l'API qui fournit des données de la base de données ainsi que le script de scraping une (01) seule fois, ajoutant ainsi les données à la base de données.
 Si vous voulez refaire un scraping executez la meme commande
 
+Par defaut le script s'execute une fois pour creer une boucle et scraper a un intervalle precis, configurer la variable d'environnement ci dessous:
+
+```bash
+INTERVAL=0 # en secondes | > 59 pour activer la boucle
+```
+
 ## Consulter les donnees collectees 🗄️
 
 Vous pouvez consulter les donnees collectees a l'adresse:

@@ -38,6 +38,7 @@ yarn.lock
 /libpeerconnection.log
 testem.log
 /typings
+/export.sh
 
 # System files
 .DS_Store
