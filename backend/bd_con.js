@@ -4,7 +4,7 @@ const info = {
   host: process.env.DB_HOST || "localhost", //"192.168.43.10",
   port: process.env.DB_PORT || "5432",
   database: process.env.DB_NAME || "sn_weather",
-  //ssl : "true"
+  ssl: "true",
 };
 const pg_promise = require("pg-promise");
 const pgp = pg_promise();
