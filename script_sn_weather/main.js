@@ -67,14 +67,17 @@ function listen() {
   server.listen(port);
 }
 //----------------- MAIN --------------------
-console.log(process.env.INTERVAL);
-if (process.env.INTERVAL && process.env.INTERVAL > 59) {
-  listen();
-  while (true) {
-    while (!SAVED) getData();
+console.log("INTERVAL = " + process.env.INTERVAL);
 
-    await new Promise((r) => setTimeout(r, process.env.INTERVAL * 1000));
-  }
+if (process.env.INTERVAL && process.env.INTERVAL > 59) {
+  (async () => {
+    while (true) {
+      while (!SAVED) getData();
+
+      await new Promise((r) => setTimeout(r, process.env.INTERVAL * 1000));
+    }
+  })();
+  listen();
 } else {
   getData();
   process.exit();
